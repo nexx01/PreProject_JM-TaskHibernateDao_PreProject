@@ -1,5 +1,9 @@
 package jm.task.core.jdbc.util;
 
+import org.hibernate.SessionFactory;
+import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
+import org.hibernate.cfg.Configuration;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -16,5 +20,30 @@ public class Util {
         return DriverManager.getConnection(hostName+dbName+connectionProperty, userName, password);
     }
 
+    private static SessionFactory hibernateSessionFactory;
 
-}
+    public static SessionFactory getHibernateSessionFactory() {
+        if (hibernateSessionFactory == null) {
+            try {
+                Configuration configuration = new Configuration().configure();
+
+                StandardServiceRegistryBuilder builder = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties());
+                hibernateSessionFactory = configuration.buildSessionFactory(builder.build());
+
+            } catch (Exception e) {
+                System.out.println("Исключение!" + e);
+            }
+        }
+        return hibernateSessionFactory;
+    }
+
+
+    }
+
+
+
+
+
+
+
+
