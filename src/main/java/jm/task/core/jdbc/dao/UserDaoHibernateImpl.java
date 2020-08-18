@@ -1,6 +1,8 @@
 package jm.task.core.jdbc.dao;
 
 import jm.task.core.jdbc.model.User;
+import jm.task.core.jdbc.util.Util;
+import org.hibernate.Session;
 
 import java.util.List;
 
@@ -27,7 +29,9 @@ public class UserDaoHibernateImpl implements UserDao {
 
     @Override
     public void removeUserById(long id) {
-
+      Session session= Util.getHibernateSessionFactory().openSession();
+      User user=(User)session.get(User.class,id);
+      session.delete(user);
     }
 
     @Override
