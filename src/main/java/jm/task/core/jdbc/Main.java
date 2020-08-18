@@ -11,6 +11,12 @@ import jm.task.core.jdbc.service.UserServiceImpl;
 
 public class Main {
     public static void main(String[] args) {
+
+
+
+    }
+
+    public static void workWithJDBC(){
         UserServiceImpl userService=new UserServiceImpl();
         userService.createUsersTable();
         userService.saveUser("Ivan","Ivanov",(byte)55);
