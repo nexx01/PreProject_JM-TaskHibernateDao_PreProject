@@ -29,10 +29,9 @@ public class Util {
         cfg.setProperty("hibernate.connection.password", "1234");
         cfg.setProperty("hibernate.show_sql", "true");
         cfg.setProperty("hibernate.format_sql", "true");
-        StandardServiceRegistryBuilder builder = new StandardServiceRegistryBuilder().applySettings(cfg.getProperties());
-        SessionFactory hibernateSessionFactory = cfg.buildSessionFactory(builder.build());
         cfg.addAnnotatedClass(User.class);
-        return hibernateSessionFactory;
+        StandardServiceRegistryBuilder builder = new StandardServiceRegistryBuilder().applySettings(cfg.getProperties());
+        return cfg.buildSessionFactory(builder.build());
     }
 }
 

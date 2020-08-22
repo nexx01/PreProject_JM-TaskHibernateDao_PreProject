@@ -5,8 +5,6 @@ import jm.task.core.jdbc.util.Util;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-import javax.persistence.EntityManager;
-import java.util.Date;
 import java.util.List;
 
 public class UserDaoHibernateImpl implements UserDao {
@@ -20,8 +18,8 @@ public class UserDaoHibernateImpl implements UserDao {
         Session session = Util.getHibernateSessionFactory().openSession();
         session.beginTransaction();
         session.createSQLQuery("CREATE TABLE  IF NOT EXISTS USER(id INT UNSIGNED AUTO_INCREMENT," +
-                "                           name VARCHAR(20) NOT NULL,lastName VARCHAR(20) NOT NULL, age TINYINT UNSIGNED,\n" +
-                " PRIMARY KEY(id));").executeUpdate();
+                                       "                           name VARCHAR(20) NOT NULL,lastName VARCHAR(20) NOT NULL, age TINYINT UNSIGNED,\n" +
+                                       " PRIMARY KEY(id));").executeUpdate();
         session.getTransaction().commit();
         session.close();
     }

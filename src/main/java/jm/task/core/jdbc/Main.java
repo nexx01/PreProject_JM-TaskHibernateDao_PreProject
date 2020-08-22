@@ -1,32 +1,23 @@
 package jm.task.core.jdbc;
 
-import jm.task.core.jdbc.dao.UserDaoHibernateImpl;
 import jm.task.core.jdbc.model.User;
+import jm.task.core.jdbc.service.UserService;
 import jm.task.core.jdbc.service.UserServiceImpl;
-
-import java.util.Arrays;
-/* Алгоритм работы приложения:
- Создание таблицы User(ов)
- Добавление 4 User(ов) в таблицу с данными на свой выбор. После каждого добавления должен быть вывод в консоль ( User с именем – name добавлен в базу данных )
- Получение всех User из базы и вывод в консоль ( должен быть переопределен toString в классе User)
- Очистка таблицы User(ов)
- Удаление таблицы*/
 
 public class Main {
     public static void main(String[] args) {
-        UserServiceImpl userService = new UserServiceImpl();
-        userService.createUsersTable();
-        userService.saveUser("Ivan", "Ivanov", (byte) 55);
-        userService.saveUser("Petr", "Petrov", (byte) 11);
-        userService.saveUser("Alex", "Alexeev", (byte) 34);
-        userService.saveUser("Alex", "Ivanov", (byte) 34);
+        UserService userServiceImpl = new UserServiceImpl();
+        userServiceImpl.createUsersTable();
+        userServiceImpl.saveUser("Ivan", "Ivanov", (byte) 55);
+        userServiceImpl.saveUser("Petr", "Petrov", (byte) 11);
+        userServiceImpl.saveUser("Alex", "Alexeev", (byte) 34);
+        userServiceImpl.saveUser("Alex", "Ivanov", (byte) 34);
 
-        for (User user : userService.getAllUsers()) {
+        for (User user : userServiceImpl.getAllUsers()) {
             System.out.println(user);
         }
 
-        userService.cleanUsersTable();
-        userService.dropUsersTable();
-
+        userServiceImpl.cleanUsersTable();
+        userServiceImpl.dropUsersTable();
     }
 }
