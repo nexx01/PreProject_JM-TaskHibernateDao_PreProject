@@ -18,6 +18,8 @@
       jdbc:mysql://127.0.0.1:3306/preprojectDB?useSSL=false&amp;serverTimezone=Europe/Moscow
     </property>
 
+    <property name="default_schema">preprojectDB</property>
+
     <property name = "hibernate.connection.username">
       root
     </property>
@@ -28,7 +30,8 @@
 
 
     <property name="show_sql">true</property>
-
+    <property name="hibernate.format_sql">true</property>
+    <property name="hibernate.current_session_context_class">thread</property>
     <!-- List of XML mapping files -->
     <!-- Mapping files -->
     <mapping class="jm.task.core.jdbc.model.User"/>
